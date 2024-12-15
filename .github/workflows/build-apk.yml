@@ -17,16 +17,16 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Instalar o SDK Android
+      - name: Baixar e configurar SDK Android
         run: |
-          mkdir -p $HOME/Android/Sdk/cmdline-tools
-          wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -P $HOME
-          unzip -q $HOME/commandlinetools-linux-7583922_latest.zip -d $HOME/Android/Sdk/cmdline-tools/
-          mv $HOME/Android/Sdk/cmdline-tools/cmdline-tools $HOME/Android/Sdk/cmdline-tools/latest
-          yes | $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
-          $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
-          echo "sdk.dir=$HOME/Android/Sdk" > $GITHUB_WORKSPACE/local.properties
-          
+          mkdir -p $HOME/Android/Sdk
+          cd $HOME/Android
+          curl -o sdk-tools-linux.zip https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
+          unzip sdk-tools-linux.zip
+          rm sdk-tools-linux.zip
+          yes | ./cmdline-tools/bin/sdkmanager --licenses
+          ./cmdline-tools/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+
       - name: Compilar o APK
         run: ./gradlew assembleDebug
 
