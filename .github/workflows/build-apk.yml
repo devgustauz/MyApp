@@ -17,13 +17,15 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Configurar SDK Android
-        uses: reactivecircus/android-sdk-action@v2
-        with:
-          api-level: 34
-          build-tools: 34.0.0
-          enable-cache: false
-
+      - name: Instalar o SDK Android
+        run: |
+          mkdir -p $HOME/Android/Sdk
+          echo "sdk.dir=$HOME/Android/Sdk" > $GITHUB_WORKSPACE/local.properties
+          wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -P $HOME
+          unzip $HOME/commandlinetools-linux-7583922_latest.zip -d $HOME/Android/Sdk
+          yes | $HOME/Android/Sdk/cmdline-tools/bin/sdkmanager --licenses
+          $HOME/Android/Sdk/cmdline-tools/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+          
       - name: Compilar o APK
         run: ./gradlew assembleDebug
 
