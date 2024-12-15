@@ -20,17 +20,22 @@ jobs:
       - name: Baixar e configurar o Android SDK
         run: |
           mkdir -p $HOME/Android/Sdk
-          cd $HOME/Android/Sdk
-          wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip -O cmdline-tools.zip
-          unzip cmdline-tools.zip
-          rm cmdline-tools.zip
-          mv cmdline-tools $HOME/Android/Sdk/cmdline-tools
-          yes | $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
-          $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --update
-          $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+          wget https://dl.google.com/android/repository/commandlinetools-linux-8523003_latest.zip -P $HOME/Android/Sdk/
+          unzip $HOME/Android/Sdk/commandlinetools-linux-8523003_latest.zip -d $HOME/Android/Sdk/
+          rm $HOME/Android/Sdk/commandlinetools-linux-8523003_latest.zip
 
-      - name: Configurar a variável ANDROID_SDK_ROOT
-        run: echo "ANDROID_SDK_ROOT=$HOME/Android/Sdk" >> $GITHUB_ENV
+      - name: Mover cmdline-tools para o local correto
+        run: |
+          mv $HOME/Android/Sdk/cmdline-tools/latest $HOME/Android/Sdk/cmdline-tools
+
+      - name: Configurar variáveis de ambiente
+        run: |
+          echo "export ANDROID_HOME=$HOME/Android/Sdk" >> $GITHUB_ENV
+          echo "export PATH=$PATH:$ANDROID_HOME/cmdline-tools/bin" >> $GITHUB_ENV
+
+      - name: Aceitar licenças do SDK
+        run: |
+          sdkmanager --licenses
 
       - name: Compilar o APK
         run: ./gradlew assembleDebug
