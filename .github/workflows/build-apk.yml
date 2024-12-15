@@ -18,7 +18,7 @@ jobs:
           java-version: '11'
 
       - name: Compilar o APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew
 
       - name: Fazer upload do APK
         uses: actions/upload-artifact@v3
