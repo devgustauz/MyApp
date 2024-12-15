@@ -19,12 +19,13 @@ jobs:
 
       - name: Instalar o SDK Android
         run: |
-          mkdir -p $HOME/Android/Sdk
-          echo "sdk.dir=$HOME/Android/Sdk" > $GITHUB_WORKSPACE/local.properties
+          mkdir -p $HOME/Android/Sdk/cmdline-tools
           wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -P $HOME
-          unzip $HOME/commandlinetools-linux-7583922_latest.zip -d $HOME/Android/Sdk
-          yes | $HOME/Android/Sdk/cmdline-tools/bin/sdkmanager --licenses
-          $HOME/Android/Sdk/cmdline-tools/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+          unzip -q $HOME/commandlinetools-linux-7583922_latest.zip -d $HOME/Android/Sdk/cmdline-tools/
+          mv $HOME/Android/Sdk/cmdline-tools/cmdline-tools $HOME/Android/Sdk/cmdline-tools/latest
+          yes | $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+          $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+          echo "sdk.dir=$HOME/Android/Sdk" > $GITHUB_WORKSPACE/local.properties
           
       - name: Compilar o APK
         run: ./gradlew assembleDebug
