@@ -8,9 +8,7 @@
  
 
 plugins {
-  id 'com.android.application'
-  version '8.1.1' 
-    apply false
+  id 'com.android.application'version '8.1.1' apply false
     id 'java' // Se for necessário suporte ao Java puro
 }
 allprojects {
