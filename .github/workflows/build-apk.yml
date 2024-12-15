@@ -17,15 +17,17 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Baixar e configurar SDK Android
+      - name: Instalar Android SDK
         run: |
-          mkdir -p $HOME/Android/Sdk
-          cd $HOME/Android
-          curl -o sdk-tools-linux.zip https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
-          unzip sdk-tools-linux.zip
-          rm sdk-tools-linux.zip
-          yes | ./cmdline-tools/bin/sdkmanager --licenses
-          ./cmdline-tools/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+          sudo apt update
+          sudo apt install -y wget unzip
+          wget https://dl.google.com/android/repository/commandlinetools-linux-8523003_latest.zip -O commandlinetools.zip
+          unzip commandlinetools.zip -d $HOME/android-sdk
+          rm commandlinetools.zip
+          yes | $HOME/android-sdk/cmdline-tools/bin/sdkmanager --sdk_root=$HOME/android-sdk --licenses
+          $HOME/android-sdk/cmdline-tools/bin/sdkmanager --sdk_root=$HOME/android-sdk "platforms;android-34" "build-tools;34.0.0"
+        env:
+          ANDROID_SDK_ROOT: $HOME/android-sdk
 
       - name: Compilar o APK
         run: ./gradlew assembleDebug
@@ -34,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: MyApp-debug.apk
-          path: ls -R app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
