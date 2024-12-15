@@ -1,55 +1,16 @@
-plugins {
-    id 'com.android.application' version '8.5.0' apply false
-    id 'java'
-    id 'application'
-}
-
-repositories {
-    google()
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'com.google.guava:guava:32.1.1-jre'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
-
-    defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.5.0'
     }
 }
 
-application {
-    mainClass = 'com.example.MyApp'
-}
-
-tasks.named('test', Test) {
-    useJUnitPlatform()
-}
-
-tasks.named('javadoc', Javadoc).configure {
-    exclude 'app/Internal*.java'
-    exclude 'app/internal/*'
-}
-
-tasks.register('zip-reports', Zip) {
-    from 'Reports/'
-    include '*'
-    archiveFileName = 'Reports.zip'
-    destinationDirectory = file('/dir')
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
