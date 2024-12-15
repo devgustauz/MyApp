@@ -6,14 +6,16 @@
  * This project uses @Incubating APIs which are subject to change.
  */
  
-
-plugins {
-  id 'com.android.application'version '8.1.1' apply false
-    id 'java' // Se for necessário suporte ao Java puro
+plugins { id 'com.android.application' version '8.1.1' 
+    apply false id 'com.android.library' version '8.1.1' 
+    apply false
 }
-allprojects {
-  repositories {
-       google()
- mavenCentral()
+dependencyResolutionManagement { 
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS) 
+    repositories {
+        google()
+  mavenCentral()
     }
 }
+rootProject.name = 'MyApp'
+include ':app'
