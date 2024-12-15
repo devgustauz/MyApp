@@ -3,11 +3,11 @@ plugins {
 }
 android {
     namespace 'com.example.myapp'
-    compileSdkVersion 34
+    compileSdkVersion 30
     defaultConfig {
     applicationId "com.example.myapp"
     minSdkVersion 14
-    targetSdkVersion 34
+    targetSdkVersion 30
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
