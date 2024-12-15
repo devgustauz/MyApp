@@ -1,5 +1,3 @@
-rootProject.name = 'MyApp-Termux'
-
 pluginManagement {
     repositories {
         google()
@@ -7,3 +5,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+rootProject.name = 'MyApp-Termux'
+
+include ':app'
