@@ -17,6 +17,16 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Baixar e configurar o SDK Android
+        run: |
+          mkdir -p $HOME/Android/Sdk
+          wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip -P $HOME/Android/Sdk
+          unzip $HOME/Android/Sdk/commandlinetools-linux-8512546_latest.zip -d $HOME/Android/Sdk
+          $HOME/Android/Sdk/cmdline-tools/bin/sdkmanager --sdk_root=$HOME/Android/Sdk "platform-tools" "build-tools;30.0.3" "platforms;android-30"
+
+      - name: Criar arquivo local.properties
+        run: echo "sdk.dir=$HOME/Android/Sdk" > local.properties
+
       - name: Compilar o APK
         run: ./gradlew assembleDebug
 
