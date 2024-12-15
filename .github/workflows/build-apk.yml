@@ -17,12 +17,12 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Instalar SDK Android
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y android-sdk
-          yes | sdkmanager --licenses
-          sdkmanager "platforms;android-34" "build-tools;34.0.0"
+      - name: Configurar SDK Android
+        uses: reactivecircus/android-sdk-action@v2
+        with:
+          api-level: 34
+          build-tools: 34.0.0
+          enable-cache: false
 
       - name: Compilar o APK
         run: ./gradlew assembleDebug
