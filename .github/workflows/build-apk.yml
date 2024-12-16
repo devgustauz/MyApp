@@ -17,31 +17,21 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Baixar e configurar o Android SDK
+      - name: Instalar o SDK Android
         run: |
-          mkdir -p $HOME/Android/Sdk
-          wget https://dl.google.com/android/repository/commandlinetools-linux-8523003_latest.zip -P $HOME/Android/Sdk/
-          unzip $HOME/Android/Sdk/commandlinetools-linux-8523003_latest.zip -d $HOME/Android/Sdk/
-          rm $HOME/Android/Sdk/commandlinetools-linux-8523003_latest.zip
-
-      - name: Mover cmdline-tools para o local correto
-        run: |
-          mv $HOME/Android/Sdk/cmdline-tools/latest $HOME/Android/Sdk/cmdline-tools
-
-      - name: Configurar variáveis de ambiente
-        run: |
-          echo "export ANDROID_HOME=$HOME/Android/Sdk" >> $GITHUB_ENV
-          echo "export PATH=$PATH:$ANDROID_HOME/cmdline-tools/bin" >> $GITHUB_ENV
-
-      - name: Aceitar licenças do SDK
-        run: |
-          sdkmanager --licenses
-
+          mkdir -p $HOME/Android/Sdk/cmdline-tools
+          wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -P $HOME
+          unzip -q $HOME/commandlinetools-linux-7583922_latest.zip -d $HOME/Android/Sdk/cmdline-tools/
+          mv $HOME/Android/Sdk/cmdline-tools/cmdline-tools $HOME/Android/Sdk/cmdline-tools/latest
+          yes | $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+          $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+          echo "sdk.dir=$HOME/Android/Sdk" > $GITHUB_WORKSPACE/local.properties
+          
       - name: Compilar o APK
         run: ./gradlew assembleDebug
 
       - name: Fazer upload do APK
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: MyApp-debug.apk
           path: app/build/outputs/apk/debug/app-debug.apk
