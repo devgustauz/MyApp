@@ -2,7 +2,6 @@ package com.example.myapp;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
     @Override
