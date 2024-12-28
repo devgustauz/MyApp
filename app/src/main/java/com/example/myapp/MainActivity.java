@@ -7,6 +7,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(new CanvasView(this));
+
+        CanvasView canvasView = new CanvasView(this);
+        setContentView(canvasView);
     }
 }
