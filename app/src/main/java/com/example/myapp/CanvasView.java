@@ -16,11 +16,11 @@ public class CanvasView extends View {
      paint = new Paint();
      paint.setColor(Color.BLUE); //Cor do Círculo
   }
-  @Overrride
+  @Override
   protected void onDraw(Canvas canvas) {
       super.onDraw(canvas);
  //Desenha um círculo na posição x, 200 com raio de 50
-      canvas.draw.Circle(xPosition, 200, 50, paint);
+      canvas.drawCircle(xPosition, 200, 50, paint);
 
  //Atualiza a posição do círculo
       xPosition += 5;

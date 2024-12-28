@@ -10,6 +10,6 @@ package com.example.myapp;
         super.onCreate(savedInstanceState);
        // aintiga activity  setContentView(R.layout.activity_main);
         CanvasView canvasView = new CanvasView(this);
-        setContenteView(canvasView); //Define o Canvas como a interface da Activity
+        setContentView(canvasView); //Define o Canvas como a interface da Activity
     }
 }
