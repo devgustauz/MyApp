@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.survivalofjack.myapp;
 
 import android.os.Bundle;
 import android.app.Activity;

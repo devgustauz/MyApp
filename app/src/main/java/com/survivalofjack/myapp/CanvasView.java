@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.survivalofjack.myapp;
 
 import android.content.Context;
 import android.graphics.Canvas;
