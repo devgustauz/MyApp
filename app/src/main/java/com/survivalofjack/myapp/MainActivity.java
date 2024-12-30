@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-import com.survivalofjack.myapp.R;
+import com.survivalofjack.myapp;
 
 public class MainActivity extends Activity {
 
@@ -17,11 +17,9 @@ public class MainActivity extends Activity {
 
        // Referência ao botão
        Button btnPlay = findViewById(R.id.btnPlay);
-
-       // Clique no Botão
        btnPLay.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
+         @Override
+         public void onClick(View v) {
 
        Intent intent = new Intent(MainActivity.this, GameActivity.class);
         startActivity(intent);
