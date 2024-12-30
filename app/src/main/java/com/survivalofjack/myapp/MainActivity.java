@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import android.widget.Butoon;
+import android.widget.Button;
 
-import com.example.myapplication.R;
+import com.survivalofjack.myapp.R;
 
 public class MainActivity extends Activity {
 
@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
        Button btnPlay = findViewById(R.id.btnPlay);
 
        // Clique no Botão
-       btnPLay.set.setOnClickListener(new View.OnClickListener() {
+       btnPLay.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
 
