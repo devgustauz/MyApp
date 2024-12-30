@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import andorid.widget.Butoon;
+import android.widget.Butoon;
 
 import com.example.myapplication.R;
 
