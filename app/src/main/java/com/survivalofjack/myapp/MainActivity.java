@@ -14,7 +14,7 @@ public class MainActivity extends Activity {
 
        // Referência ao botão
        Button btnPlay = findViewById(R.id.btnPlay);
-       btnPLay.setOnClickListener(new View.OnClickListener() {
+       btnPlay.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
             Toast.makeText(MainActivity.this, "Botão Play Clicado", Toast.LENGTH_SHORT).show();
