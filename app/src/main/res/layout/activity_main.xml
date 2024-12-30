@@ -14,7 +14,7 @@
    <Button
        android:id="@+id/bbtnPlay"
        android:layout_width="wrap_content"
-       android:layout_heigth="wrap_content"
+       android:layout_height="wrap_content"
        android:text="Play"
        android:layout_centerInParent="true" />
 
