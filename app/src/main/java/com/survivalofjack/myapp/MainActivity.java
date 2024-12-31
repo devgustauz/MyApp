@@ -2,6 +2,7 @@ package com.survivalofjack.myapp;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.widget.Toast;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +20,13 @@ getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.La
 
         setContentView(R.layout.activity_main); // Layout inicial
 
-       // Referência ao botão
-       Button btnPlay = findViewById(R.id.btnPlay);
-       btnPlay.setOnClickListener(new View.OnClickListener() {
+       // Botão inicia o jogo
+       Button startGameButton = findViewById(R.id.startGameButton);
+       startGameButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-            Toast.makeText(MainActivity.this, "Botão Play Clicado", Toast.LENGTH_SHORT).show();
+             Intent intent = new Intent(MainActivity.this, GameActivity.class);
+      startActivity(intent);
   }
 });
   }

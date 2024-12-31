@@ -12,10 +12,10 @@
        android:scaleType="centerCrop" />
 
    <Button
-       android:id="@+id/btnPlay"
+       android:id="@+id/startGameButton"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="Play"
+       android:text="Iniciar Jogo"
        android:layout_centerInParent="true" />
 
 </RelativeLayout>
