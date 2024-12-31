@@ -4,6 +4,7 @@ package com.survivalofjack.myapp;
  import android.os.Bundle;
  import android.view.Window;
  import android.view.WindowManager;
+ import com.survivalofjack.myapp.CanvasView;
 
 public class GameActivity extends Activity {
  @Override
