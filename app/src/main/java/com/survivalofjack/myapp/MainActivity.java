@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.widget.Toast;
 import android.view.View;
 import android.widget.Button;
+import android.view.WindowManager;
 
 public class MainActivity extends Activity {
     @Override
