@@ -1,6 +1,6 @@
 package com.survivalofjack.myapp;
 
- import android.content.Content;
+ import android.content.Context;
  import android.graphics.Canvas;
  import android.view.View;
 
