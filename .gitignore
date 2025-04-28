@@ -3,3 +3,21 @@
 
 # Ignore Gradle build output directory
 build
+
+# Pasta de builds
+/build/
+/app/build/
+
+# Cache do Gradle
+/.gradle/
+/app/.gradle/
+
+# Arquivo local do SDK (cada um tem o seu)
+local.properties
+
+# IDEs
+.idea/
+*.iml
+
+# Outros
+.DS_Store
